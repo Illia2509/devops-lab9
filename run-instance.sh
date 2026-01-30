@@ -1,0 +1,11 @@
+aws ec2 run-instances \
+    --image-id ami-053b0d53c279acc90 \
+    --count 1 \
+    --instance-type t3.micro \
+    --key-name MyKey \
+    --security-group-ids sg-0b29dda339a9151fe \
+    --subnet-id subnet-0fc3210d48c9ad45c \
+    --user-data file://utilities-setup.sh \
+    --iam-instance-profile Name="SSM" \
+    --output text \
+    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Task9}]'
